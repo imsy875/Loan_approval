@@ -4,14 +4,11 @@ import requests
 import pickle
 import numpy as np
 import sklearn
-from sklearn.preprocessing import StandardScaler
 app = Flask(__name__)
 model = pickle.load(open('Last_Model.pkl', 'rb'))
 @app.route('/',methods=['GET'])
 def Home():
     return render_template('index.html')
-
-standard_to = StandardScaler()
 @app.route("/predict", methods=['POST'])
 def predict():
     if request.method == 'POST':
@@ -60,7 +57,7 @@ def predict():
                                    Credit_History, Gender_Male, Self_Employed_Yes, 
                                    Married_yes,Property_Area_Semiurban, Property_Area_Urban,
                                    Education_not_graduate]])
-        output=prediction()
+        output=prediction[0]
         if output==0:
             return render_template('index.html',prediction_texts="Sorry you are not eligible for the loan")
         else:
