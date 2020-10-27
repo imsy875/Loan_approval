@@ -57,7 +57,7 @@ def predict():
                                    Credit_History, Gender_Male, Self_Employed_Yes, 
                                    Married_yes,Property_Area_Semiurban, Property_Area_Urban,
                                    Education_not_graduate]])
-        output=prediction[0]
+        output=prediction()
         if output==0:
             return render_template('index.html',prediction_texts="Sorry you are not eligible for the loan")
         else:
