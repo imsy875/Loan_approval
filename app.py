@@ -52,12 +52,12 @@ def predict():
         else:
             Property_Area_Semiurban=0
             Property_Area_Urban=0
-        prediction=model.predict([[Dependents,ApplicantIncome,CoapplicantIncome,
+        prediction=model.predict([Dependents,ApplicantIncome,CoapplicantIncome,
                                    LoanAmount, Loan_Amount_Term,
                                    Credit_History, Gender_Male, Self_Employed_Yes, 
                                    Married_yes,Property_Area_Semiurban, Property_Area_Urban,
-                                   Education_not_graduate]])
-        output=prediction
+                                   Education_not_graduate])
+        output=prediction()
         if output==0:
             return render_template('index.html',prediction_texts="Sorry you are not eligible for the loan")
         else:
