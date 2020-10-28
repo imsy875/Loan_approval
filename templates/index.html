@@ -1,72 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://use.fontawesome.com/ba5ad5b5a1.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <title>Loan Approval?</title>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  
 </head>
 
-<body style="background-color:LightGray;">
-    <div>
-        <form  class="modal-content" action="{{ url_for('predict')}}" method="post">
-            <h2>Checking Loan Approval</h2>
-            <h3>Number of Dependents</h3>
-            <input id="first" name="dependents" type="number ">
-            <h3>Income of the Applicant</h3>
-            <br><input id="second" name="income" required="required">
-            <h3>Income of the your partner </h3>
-            <input id="third" name="coincome" required="required">
-            <h3>How much loan you want?</h3>
-            <input id="fourth" name="loan_amount" required="required">
-            <h3>What is your Loan Amount Term?</h3>
-            <input id="fifth" name="loan_amount_term" required="required">   
-            
-            
-            <h3>What is credit History?</h3>
-            <br><select name="credit" id="history" required="required">
-                <option value="1.0">1.0</option>
-                <option value="0.0">0.0</option>
-            </select>
-            <h3>specify your gender</h3>
-            <br><select name="gender" id="gend" required="required">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select>
-            <h3>Are you married?</h3>
-            <br><select name="married" id="marriage" required="required">
-                <option value="yes">YES</option>
-                <option value="no">NO</option>
-            </select>
-            <h3>Qualification</h3>
-            <br><select name="graduate" id="graduation" required="required">
-                <option value="graduate">Graduate</option>
-                <option value="not_graduate">Not Graduate</option>
-            </select>
-            <h3>Do you own a bussiness</h3>
-            <br><select name="self_employed" id="buss" required="required">
-                <option value="no">NO</option>
-                <option value="yes">YES</option>
-            </select>
-            <h3>area of living</h3>
-            <br><select name="living" id="live" required="required">
-                <option value="urban">Urban</option>
-                <option value="rural">Rural</option>
-                <option value="semi_urban">Semi-Urban</option>
-            </select>
-            <br><br>
-            <button id="sub" type="submit ">LOAN APPROVAL</button>
-            <br>
+<body>
+ <div class="login">
+	<h1>Predict Salary Analysis</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="experience" placeholder="Experience" required="required" />
+        <input type="text" name="test_score" placeholder="Test Score" required="required" />
+		<input type="text" name="interview_score" placeholder="Interview Score" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
 
 
-        </form>
-
-
-        <br><br><h3>{{ prediction_text }}<h3>
-    </div>
 </body>
 </html>
