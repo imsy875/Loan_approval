@@ -15,7 +15,7 @@ Jinja2==2.11.2
 joblib==0.15.1
 jsonify==0.5
 requests==2.24.0
-sklearn==0.0
+sklearn>=0.0
 threadpoolctl==2.1.0
 urllib3==1.25.9
 Werkzeug==1.0.1
